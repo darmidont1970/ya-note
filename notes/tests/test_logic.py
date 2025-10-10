@@ -22,7 +22,7 @@ class NoteCreationTest(TestCase):
         cls.author = User.objects.create(username='Автор')
         cls.url = reverse('notes:add')
 
-    def test_create_note(self):
+    def test_author_create_note(self):
         """Creating a note works correctly."""
         self.client.force_login(self.author)
         form_data = {
@@ -40,7 +40,7 @@ class NoteCreationTest(TestCase):
         self.assertEqual(note.slug, self.NOTE_SLUG)
         self.assertEqual(note.author, self.author)
 
-    def test_create_note_without_slug(self):
+    def test_author_create_note_without_slug(self):
         """Checking if a note was created without a slug."""
         self.client.force_login(self.author)
         form_data = {
